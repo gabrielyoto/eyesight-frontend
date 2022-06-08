@@ -1,8 +1,10 @@
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { RootStackNavigatorParams } from '../../App';
+import * as tf from '@tensorflow/tfjs';
+import '@tensorflow/tfjs-react-native';
 
 import * as S from './WelcomeScreen.styles';
 
@@ -15,7 +17,7 @@ const WelcomeScreen = () => {
   const { t } = useTranslation();
   const navigation = useNavigation<WelcomeScreenProp>();
 
-  const handleContinue = () => {
+  const handleContinue = async () => {
     navigation.navigate('Camera');
   };
 

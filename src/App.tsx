@@ -7,6 +7,7 @@ import WelcomeScreen from './screens/Welcome/WelcomeScreen';
 import CameraScreen from './screens/Camera';
 import './i18n';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { ModelProvider } from './hooks/useModel';
 
 export type RootStackNavigatorParams = {
   Welcome: undefined;
@@ -19,19 +20,21 @@ const App = () => {
   return (
     <NavigationContainer>
       <SafeAreaProvider>
-        <StatusBar
-          barStyle="dark-content"
-          translucent
-          backgroundColor="transparent"
-        />
-        <Stack.Navigator
-          screenOptions={{
-            header: () => <></>,
-          }}
-        >
-          <Stack.Screen name="Welcome" component={WelcomeScreen} />
-          <Stack.Screen name="Camera" component={CameraScreen} />
-        </Stack.Navigator>
+        <ModelProvider>
+          <StatusBar
+            barStyle="dark-content"
+            translucent
+            backgroundColor="transparent"
+          />
+          <Stack.Navigator
+            screenOptions={{
+              header: () => <></>,
+            }}
+          >
+            <Stack.Screen name="Welcome" component={WelcomeScreen} />
+            <Stack.Screen name="Camera" component={CameraScreen} />
+          </Stack.Navigator>
+        </ModelProvider>
       </SafeAreaProvider>
     </NavigationContainer>
   );
